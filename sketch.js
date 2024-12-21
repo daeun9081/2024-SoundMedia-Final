@@ -79,20 +79,20 @@ function playMusic1() {
   if (!sound1.isPlaying()) {
     sound1.loop();
     sound1.setVolume(vol);
-    btn.html("MUSIC1 STOP");
+    btn1.html("MUSIC1 STOP");
   } else {
     sound1.stop();
-    btn.html("MUSIC1 PLAY");
+    btn1.html("MUSIC1 PLAY");
   }
 }
 function playMusic2() {
   if (!sound2.isPlaying()) {
     sound2.loop();
     sound2.setVolume(vol);
-    btn.html("MUSIC2 STOP");
+    btn2.html("MUSIC2 STOP");
   } else {
     sound2.stop();
-    btn.html("MUSIC2 PLAY");
+    btn2.html("MUSIC2 PLAY");
   }
 }
 
@@ -100,12 +100,12 @@ function pauseMusic() {
   if (!sound1.isPlaying()) {
   } else {
     sound1.pause();
-    btn.html("MUSIC1 PLAY");
+    btn1.html("MUSIC1 PLAY");
   }
   if (!sound2.isPlaying()) {
   } else {
     sound2.pause();
-    btn.html("MUSIC2 PLAY");
+    btn2.html("MUSIC2 PLAY");
   }
 }
 

@@ -128,14 +128,14 @@ function jumpSong1() {
 function jumpSong2() {
   if (!sound1.isPlaying()) {
     len += sound1.duration() / 5;
-    if (len >= sound.duration()) {
+    if (len >= sound1.duration()) {
       len = 0;
     }
     sound1.jump(len);
   }
   if (sound2.isPlaying()) {
     len += sound2.duration() / 5;
-    if (len >= sound.duration()) {
+    if (len >= sound2.duration()) {
       len = 0;
     }
     sound2.jump(len);

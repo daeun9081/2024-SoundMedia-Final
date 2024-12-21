@@ -5,7 +5,9 @@ let bpm;
 let sound1;
 let sound2;
 let vol;
-let btn;
+let btn1;
+let btn2;
+let pausebtn;
 let btnM;
 let btnP;
 let slider;
@@ -29,10 +31,10 @@ function setup() {
   bpm = 0;
   amp = new p5.Amplitude();
 
-  btn = createButton("MUSIC1 PLAY");
-  btn.mousePressed(playMusic1);
-  btn = createButton("MUSIC2 PLAY");
-  btn.mousePressed(playMusic2);
+  btn1 = createButton("MUSIC1 PLAY");
+  btn1.mousePressed(playMusic1);
+  btn2 = createButton("MUSIC2 PLAY");
+  btn2.mousePressed(playMusic2);
   pausebtn = createButton("PUASE");
   pausebtn.mousePressed(pauseMusic);
   btnM = createButton("VOL -");
@@ -45,6 +47,7 @@ function setup() {
   btnjump1 = createButton("<<");
   btnjump2 = createButton(">>");
   btnjump1.mousePressed(jumpSong1);
+  btnjump2.mousePressed(jumpSong2);
 }
 
 function draw() {
@@ -101,16 +104,32 @@ function pauseMusic() {
 }
 
 function jumpSong1() {
-  if (!sound1.isPlaying) {
+  if (!sound1.isPlaying()) {
     len -= sound1.duration() / 5;
     if (len < 0) {
       len = 0;
     }
     sound1.jump(len);
   }
-  if (sound2.isPlaying) {
+  if (sound2.isPlaying()) {
     len -= sound2.duration() / 5;
     if (len < 0) {
+      len = 0;
+    }
+    sound2.jump(len);
+  }
+}
+function jumpSong2() {
+  if (!sound1.isPlaying()) {
+    len += sound1.duration() / 5;
+    if (len >= sound.duration()) {
+      len = 0;
+    }
+    sound1.jump(len);
+  }
+  if (sound2.isPlaying()) {
+    len += sound2.duration() / 5;
+    if (len >= sound.duration()) {
       len = 0;
     }
     sound2.jump(len);

@@ -77,21 +77,21 @@ function draw() {
 
 function playMusic1() {
   if (!sound1.isPlaying()) {
-    sound.loop();
-    sound.setVolume(vol);
+    sound1.loop();
+    sound1.setVolume(vol);
     btn.html("MUSIC1 STOP");
   } else {
-    sound.stop();
+    sound1.stop();
     btn.html("MUSIC1 PLAY");
   }
 }
 function playMusic2() {
   if (!sound2.isPlaying()) {
-    sound.loop();
-    sound.setVolume(vol);
+    sound2.loop();
+    sound2.setVolume(vol);
     btn.html("MUSIC2 STOP");
   } else {
-    sound.stop();
+    sound2.stop();
     btn.html("MUSIC2 PLAY");
   }
 }
@@ -99,12 +99,12 @@ function playMusic2() {
 function pauseMusic() {
   if (!sound1.isPlaying()) {
   } else {
-    sound.pause();
+    sound1.pause();
     btn.html("MUSIC1 PLAY");
   }
   if (!sound2.isPlaying()) {
   } else {
-    sound.pause();
+    sound2.pause();
     btn.html("MUSIC2 PLAY");
   }
 }

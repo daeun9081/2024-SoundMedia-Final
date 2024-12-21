@@ -2,7 +2,8 @@ let a;
 let b;
 
 let bpm;
-let sound;
+let sound1;
+let sound2;
 let vol;
 let btn;
 let btnM;
@@ -17,7 +18,8 @@ let amp; //소리의 크기 (인풋)
 
 function preload() {
   soundFormats("mp3", "ogg");
-  sound = loadSound("On Rainy Days - BEAST.mp3");
+  sound1 = loadSound("On Rainy Days - BEAST.mp3");
+  sound2 = loadSound("Forever Young - Otis McDonald.mp3");
 }
 
 function setup() {
@@ -27,8 +29,10 @@ function setup() {
   bpm = 0;
   amp = new p5.Amplitude();
 
-  btn = createButton("MUSIC PLAY");
-  btn.mousePressed(playMusic);
+  btn = createButton("MUSIC1 PLAY");
+  btn.mousePressed(playMusic1);
+  btn = createButton("MUSIC2 PLAY");
+  btn.mousePressed(playMusic2);
   pausebtn = createButton("PUASE");
   pausebtn.mousePressed(pauseMusic);
   btnM = createButton("VOL -");
@@ -41,7 +45,6 @@ function setup() {
   btnjump1 = createButton("<<");
   btnjump2 = createButton(">>");
   btnjump1.mousePressed(jumpSong1);
-  btnjump2.mousePressed(jumpSong2);
 }
 
 function draw() {
@@ -63,38 +66,55 @@ function draw() {
   ellipse(320, 400, amp.getLevel() * 1000, amp.getLevel() * 1000);
 }
 
-function playMusic() {
-  if (!sound.isPlaying()) {
+function playMusic1() {
+  if (!sound1.isPlaying()) {
     sound.loop();
     sound.setVolume(vol);
-    btn.html("MUSIC STOP");
+    btn.html("MUSIC1 STOP");
   } else {
     sound.stop();
-    btn.html("MUSIC PLAY");
+    btn.html("MUSIC1 PLAY");
+  }
+}
+function playMusic2() {
+  if (!sound2.isPlaying()) {
+    sound.loop();
+    sound.setVolume(vol);
+    btn.html("MUSIC2 STOP");
+  } else {
+    sound.stop();
+    btn.html("MUSIC2 PLAY");
   }
 }
 
 function pauseMusic() {
-  if (!sound.isPlaying()) {
+  if (!sound1.isPlaying()) {
   } else {
     sound.pause();
-    btn.html("MUSIC PLAY");
+    btn.html("MUSIC1 PLAY");
+  }
+  if (!sound2.isPlaying()) {
+  } else {
+    sound.pause();
+    btn.html("MUSIC2 PLAY");
   }
 }
 
-function jumpSong2() {
-  len += sound.duration() / 5;
-  if (len >= sound.duration()) {
-    len = 0;
-  }
-  sound.jump(len);
-}
 function jumpSong1() {
-  len -= sound.duration() / 5;
-  if (len < 0) {
-    len = 0;
+  if (!sound1.isPlaying) {
+    len -= sound1.duration() / 5;
+    if (len < 0) {
+      len = 0;
+    }
+    sound1.jump(len);
   }
-  sound.jump(len);
+  if (sound2.isPlaying) {
+    len -= sound2.duration() / 5;
+    if (len < 0) {
+      len = 0;
+    }
+    sound2.jump(len);
+  }
 }
 
 function minus() {

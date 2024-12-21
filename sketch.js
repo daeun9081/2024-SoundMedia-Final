@@ -78,6 +78,7 @@ function draw() {
 
 function playMusic1() {
   if (!sound1.isPlaying()) {
+    sound2.pause();
     sound1.loop();
     sound1.setVolume(vol);
     btn1.html("MUSIC1 STOP");
@@ -88,6 +89,7 @@ function playMusic1() {
 }
 function playMusic2() {
   if (!sound2.isPlaying()) {
+    sound1.pause();
     sound2.loop();
     sound2.setVolume(vol);
     btn2.html("MUSIC2 STOP");

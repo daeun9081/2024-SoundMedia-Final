@@ -15,7 +15,8 @@ let sliderPan;
 let sliderRate;
 let btnjump1;
 let btnjump2;
-var len = 0;
+var len1 = 0;
+var len2 = 0;
 let amp; //소리의 크기 (인풋)
 
 function preload() {
@@ -110,7 +111,7 @@ function pauseMusic() {
 }
 
 function jumpSong1() {
-  if (!sound1.isPlaying()) {
+  if (sound1.isPlaying()) {
     len -= sound1.duration() / 5;
     if (len < 0) {
       len = 0;
@@ -126,7 +127,7 @@ function jumpSong1() {
   }
 }
 function jumpSong2() {
-  if (!sound1.isPlaying()) {
+  if (sound1.isPlaying()) {
     len += sound1.duration() / 5;
     if (len >= sound1.duration()) {
       len = 0;

@@ -15,9 +15,9 @@ let btnjump2;
 var len = 0;
 let amp; //소리의 크기 (인풋)
 
-function preload(){
-  soundFormats('mp3', 'ogg');
-  sound = loadSound('On Rainy Days - BEAST.mp3');
+function preload() {
+  soundFormats("mp3", "ogg");
+  sound = loadSound("On Rainy Days - BEAST.mp3");
 }
 
 function setup() {
@@ -31,9 +31,9 @@ function setup() {
   btn.mousePressed(playMusic);
   pausebtn = createButton("PUASE");
   pausebtn.mousePressed(pauseMusic);
-  btnM= createButton("VOL -");
+  btnM = createButton("VOL -");
   btnM.mousePressed(minus);
-  btnP= createButton("VOL +");
+  btnP = createButton("VOL +");
   btnP.mousePressed(plus);
   slider = createSlider(0, 1.5, 1, 0.1);
   sliderPan = createSlider(-1, 1, 0, 0.1);
@@ -52,7 +52,7 @@ function draw() {
   sound.setVolume(vol);
   sound.rate(sliderRate.value());
   //console.log(amp.getLevel());
-  noStroke()
+  noStroke();
   fill(255);
   ellipse(200, 150, 60, 60);
   ellipse(440, 150, 60, 60);
@@ -60,52 +60,49 @@ function draw() {
   ellipse(200, 150, 40, 40);
   ellipse(440, 150, 40, 40);
   fill(255, 150, 190);
-  ellipse(320, 400, amp.getLevel()*1000, amp.getLevel()*1000);
+  ellipse(320, 400, amp.getLevel() * 1000, amp.getLevel() * 1000);
 }
 
-function playMusic(){
-  if(!sound.isPlaying()){
+function playMusic() {
+  if (!sound.isPlaying()) {
     sound.loop();
     sound.setVolume(vol);
     btn.html("MUSIC STOP");
-  }
-  else{
+  } else {
     sound.stop();
     btn.html("MUSIC PLAY");
   }
 }
 
-function pauseMusic(){
-  if(!sound.isPlaying()){
-
-  }
-  else{
+function pauseMusic() {
+  if (!sound.isPlaying()) {
+  } else {
     sound.pause();
     btn.html("MUSIC PLAY");
   }
 }
 
-function jumpSong2(){
-  len += sound.duration()/10;
-  if(len >= sound.duration()){
+function jumpSong2() {
+  len += sound.duration() / 5;
+  if (len >= sound.duration()) {
     len = 0;
   }
   sound.jump(len);
 }
-function jumpSong1(){
-  len -= sound.duration()/10;
-  if(len < 0){
+function jumpSong1() {
+  len -= sound.duration() / 5;
+  if (len < 0) {
     len = 0;
   }
   sound.jump(len);
 }
 
-function minus(){
+function minus() {
   vol = vol - 0.1;
   slider.value(vol);
 }
 
-function plus(){
+function plus() {
   vol = vol + 0.1;
   slider.value(vol);
 }

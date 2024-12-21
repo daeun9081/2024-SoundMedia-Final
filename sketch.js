@@ -54,9 +54,15 @@ function draw() {
   background(30, 160, 180);
   //console.log(slider.value());
   vol = slider.value();
-  sound.pan(sliderPan.value()); //스피커 L/R 어느쪽으로 치중할지
-  sound.setVolume(vol);
-  sound.rate(sliderRate.value());
+  if (sound1.isPlaying()) {
+    sound1.pan(sliderPan.value()); //스피커 L/R 어느쪽으로 치중할지
+    sound1.setVolume(vol);
+    sound1.rate(sliderRate.value());
+  } else if (sound2.isPlaying()) {
+    sound2.pan(sliderPan.value()); //스피커 L/R 어느쪽으로 치중할지
+    sound2.setVolume(vol);
+    sound2.rate(sliderRate.value());
+  }
   //console.log(amp.getLevel());
   noStroke();
   fill(255);
